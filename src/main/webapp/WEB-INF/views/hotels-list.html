@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Hotels List</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-8">
+    <h2>Hotels List</h2>
+    <h5>All available Hotels in travel agency</h5>
+    <form th:action="@{/hotels/create}" method="get">
+        <div align="right">
+            <input class="btn-info btn-lg" type="submit" value="Create a new hotel">
+        </div>
+    </form>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Hotel name</th>
+            <th scope="col">Country</th>
+            <th scope="col">City</th>
+            <th scope="col" colspan="3">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hotel, iStat: ${hotels}">
+            <th scope="row" th:text="${iStat.index + 1}"/>
+            <td th:text="${hotel.name}"/>
+            <td th:text="${hotel.country}"/>
+            <td th:text="${hotel.city}"/>
+
+            <div>
+                <td><a th:href="@{|/hotels/${hotel.id}/read|}">Info</a></td>
+                <td><a th:href="@{|/hotels/${hotel.id}/update|}">Edit</a></td>
+                <td><a th:href="@{|/hotels/${hotel.id}/delete|}">Remove</a></td>
+            </div>
+        </tr>
+    </table>
+    <br>
+    <span><a th:href="@{/home}">Return to home page</a></span>
+</div>
+</body>
+</html>

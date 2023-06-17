@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Home page</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2">
+    <h2>Hi, <b th:text="${user}"></b>, find your next stay</h2>
+    <h5>Search low prices on hotels, homes and much more...</h5>
+    <br>
+    <form class="inline-block" th:action="@{|/orders/create/${id}}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 0px" class="btn btn-info">Search</button>
+    </form>
+
+    <form class="inline-block" th:action="@{|/users/${id}/update|}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Edit profile</button>
+    </form>
+</div>
+<br>
+<br>
+<div class="col-md-offset-2">
+    <h3>Additional manager's options</h3>
+    <h5>More options for your own travel agency</h5>
+
+    <br>
+    <form class="inline-block" th:action="@{/hotels/create}" method="GET">
+        <button type="submit" style="width:120px" class="btn btn">Add Hotel</button>
+    </form>
+
+    <form class="inline-block" th:action="@{/rooms/create}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Add Room</button>
+    </form>
+
+    <form class="inline-block" th:action="@{/users/all}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Clients</button>
+    </form>
+
+    <form class="inline-block" th:action="@{/orders/all}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Orders</button>
+    </form>
+
+    <form class="inline-block" th:action="@{/hotels/all}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Hotels</button>
+    </form>
+
+    <form class="inline-block" th:action="@{/rooms/all}" method="GET">
+        <button type="submit" style="width:120px; margin-left: 5px" class="btn btn">Rooms</button>
+    </form>
+
+    <style>
+        .inline-block {
+            display: inline-block;
+            list-style: none;
+        }
+    </style>
+</div>
+</body>
+</html>

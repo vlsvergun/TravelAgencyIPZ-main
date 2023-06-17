@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Info about Client</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-4">
+    <div>
+        <h2>Details</h2>
+        <br>
+        <table class="table">
+            <tr>
+                <td>First name:</td>
+                <td><b th:text="${user.firstname}"></b></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><b th:text="${user.lastname}"></b></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td><b th:text="${user.email}"></b></td>
+            </tr>
+            <tr>
+                <td>Role:</td>
+                <td><b th:text="${user.role.name}"></b></td>
+            </tr>
+        </table>
+        <span><a th:href="@{|/orders/all/users/${user.id}|}"
+                 th:text="|${user.firstname} ${user.lastname} orders list|"></a></span>
+    </div>
+</div>
+</body>
+</html>

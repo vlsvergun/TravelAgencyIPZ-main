@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>List of Orders</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-8">
+    <h2 th:text="|${user.firstName} ${user.lastName} orders|"></h2>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Order Date</th>
+            <th scope="col" colspan="2">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order, iStat: ${orders}">
+            <th scope="row" th:text="${iStat.index + 1}"/>
+            <td th:text="${order.orderDate.format(formatter)}"/>
+            <div>
+                <td><a th:href="@{|/orders/${order.id}/read/users/${user.id}|}">Info</a></td>
+                <td><a th:href="@{|/orders/${order.id}/delete/users/${user.id}|}">Remove</a></td>
+            </div>
+        </tr>
+    </table>
+    <br>
+    <span><a th:href="@{/home}">Return to home page</a></span>
+</div>
+</body>
+</html>

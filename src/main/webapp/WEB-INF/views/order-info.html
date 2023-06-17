@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Order Details</title>
+</head>
+<body>
+<div th:replace="header"></div>
+<div class="col-md-offset-2 col-sm-4">
+    <h2>Order Details</h2>
+    <br>
+    <table class="table">
+        <tr>
+            <td>ID:</td>
+            <td><b th:text="${order.id}"></b></td>
+        </tr>
+        <tr>
+            <td>Order Date:</td>
+            <td><b th:text="${order.orderDate.format(formatter)}"></b></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td><b th:text="${order.hotel.country.name()}"></b></td>
+        </tr>
+        <tr>
+            <td>Hotel:</td>
+            <td><b th:text="${order.hotel.name}"></b></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><b th:text="|${order.rooms.get(0).price} Euro|"></b></td>
+        </tr>
+        <tr>
+            <td>Rooms:</td>
+            <td><b th:text="${rooms}"></b></td>
+        </tr>
+        <tr>
+            <td>Check-In Date:</td>
+            <td><b th:text="${order.checkIn}"></b></td>
+        </tr>
+        <tr>
+            <td>Check-Out Date:</td>
+            <td><b th:text="${order.checkOut}"></b></td>
+        </tr>
+        <tr>
+            <td>Amount:</td>
+            <td><b th:text="|${order.amount} Euro|"></b></td>
+        </tr>
+    </table>
+    <br>
+    <span><a th:href="@{/home}">Return to home page</a></span>
+</div>
+</body>
+</html>
